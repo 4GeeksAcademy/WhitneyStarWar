@@ -1,0 +1,27 @@
+body{
+  background-color: black;
+}
+
+
+
+.character {
+    border: 2px;
+}
+.heart-icon {
+  border: 1px solid goldenrod;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  transition: box-shadow 0.3s; /* Add a smooth transition for the glow effect */
+}
+
+.heart-icon.clicked {
+  box-shadow: 0 0 10px yellow; /* Apply a yellow glow when the "clicked" class is present */
+}
+
+  h1{
+    color:darkred;
+  }
+  .favButton {
+margin-left: 100px;
+  }
