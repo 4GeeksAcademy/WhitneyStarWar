@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			characters: [],
 			planets: [],
-			starships: [], 
+			starships: [],
 			favorites: []
 		},
 		actions: {
@@ -45,9 +45,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error("Error fetching starships data:", error);
 				}
+
 			},
-		},
-	};
+			addToFavorites: (item) => {
+				const favorites = getStore().favorites
+				favorites.push(item)
+				setStore({ favorites: favorites });
+			},
+			removeFavorites: (index) => {
+				let store = getStore()
+				let newFavorites = store.favorites.filter((item, idx) => idx != index)
+				setStore({ favorites: newFavorites })
+			}
+		}
+	}
+
 };
 
 export default getState;
