@@ -1,33 +1,71 @@
-import React, { useState, useContext, useEffect } from "react";
+
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Card = (props) => {
     const [isClicked, setIsClicked] = useState(false);
-    const { store, actions } = useContext(Context)
+    const { actions } = useContext(Context);
+
+    const handleButtonClick = () => {
+        setIsClicked(!isClicked);
+        actions.addToFavorites(props.item);
+    };
 
 
     return (
-        <div className="card border " style={{ width: "18rem" }}>
+        <div className="card border" style={{ width: "18rem" }}>
             <img
-                src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fvia.placeholder.com%2F500x325"
+                src={`https://starwars-visualguide.com/assets/img/${props.category}/${props.idx + 1}.jpg`}
+                onError={(e) => {
+                    e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg'
+                }}
                 className="card-img-top"
                 alt="..."
             />
             <div className="card-body">
                 <h5 className="card-title">{props.item.name}</h5>
                 <p className="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                    {props.category === "characters" && (
+                        <>
+                            <p>Gender: {props.item.gender}</p>
+                            <p>Hair Color: {props.item.hair_color}</p>
+                            <p>Eye Color: {props.item.eye_color}</p>
+                        </>
+                    )}
+                    {props.category === "planets" && (
+                        <>
+                            <p>Terrain: {props.item.terrain}</p>
+                            <p>Population: {props.item.population}</p>
+                            <p>Climate: {props.item.climate}</p>
+                        </>
+                    )}
+                    {props.category === "starships" && (
+                        <>
+                            <p>Manufacturer: {props.item.manufacturer}</p>
+                            <p>Model: {props.item.model}</p>
+                            <p>Class: {props.item.starship_class}</p>
+                        </>
+                    )}
                 </p>
+
                 <div className="navbar">
-                    <a href="#" className="btn btn-primary">
-                        Learn more
-                    </a>
+                    <Link to={`/${props.category}/details/${props.idx}`}>
+                        <a href="#" className="btn btn-danger">
+                            Learn more
+                        </a>
+                    </Link>
                     <div className="favBox">
-                        <div className={isClicked ? "far fa-heart glow" : "far fa-heart"} onClick={() => { setIsClicked(!isClicked); actions.addToFavorites(props.item); }}>
-                        </div>
+                        <button
+                            className={isClicked ? "fa-brands fa-jedi-order clicked" : "fa-brands fa-jedi-order glow"}
+                            onClick={handleButtonClick}
+                        />
                     </div>
                 </div>
             </div>
         </div>
     );
 };
+
+
+

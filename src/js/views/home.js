@@ -16,7 +16,7 @@ export const Home = () => {
 					)
 				})}
 			</div>
-		
+
 
 
 
@@ -30,7 +30,7 @@ export const Home = () => {
 					)
 				})}
 			</div>
-			<h1>Planets</h1>
+			<h1>Starships</h1>
 			<div className="row dataRow ">
 				{store.starships.map((starship, index) => {
 					return (

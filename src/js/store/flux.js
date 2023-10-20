@@ -4,12 +4,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			planets: [],
 			starships: [],
-			favorites: []
+			favorites: [],
+			characterBio: []
 		},
 		actions: {
 			fetchCharacterData: async () => {
 				try {
-					const response = await fetch("https://www.swapi.tech/api/people");
+					const response = await fetch("https://swapi.dev/api/people/");
 					if (!response.ok) {
 						throw new Error("Failed to fetch character data");
 					}
@@ -22,9 +23,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			fetchPlanetsData: async () => {
 				try {
-					const response = await fetch("https://www.swapi.tech/api/planets");
+					const response = await fetch("https://swapi.dev/api/planets");
 					if (!response.ok) {
-						throw new Error("Failed to fetch planets data");
+						throw Error("Failed to fetch planets data");
 					}
 					const data = await response.json();
 
@@ -35,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			fetchStarShipsData: async () => {
 				try {
-					const response = await fetch("https://www.swapi.tech/api/starships");
+					const response = await fetch("https://swapi.dev/api/starships");
 					if (!response.ok) {
 						throw new Error("Failed to fetch starships data");
 					}
@@ -45,21 +46,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error("Error fetching starships data:", error);
 				}
-
 			},
+		
+			
+
+
 			addToFavorites: (item) => {
-				const favorites = getStore().favorites
-				favorites.push(item)
+				const favorites = getStore().favorites;
+				favorites.push(item);
 				setStore({ favorites: favorites });
 			},
 			removeFavorites: (index) => {
-				let store = getStore()
-				let newFavorites = store.favorites.filter((item, idx) => idx != index)
-				setStore({ favorites: newFavorites })
-			}
+				let store = getStore();
+				let newFavorites = store.favorites.filter((item, idx) => idx !== index);
+				setStore({ favorites: newFavorites });
+			},
 		}
 	}
-
 };
 
-export default getState;
+	// // const request =await fetch (https://www.swapi/api/people/');
+	// const response = await  request .jsn[];
+	// const character=response.results.map(character => {
+	// 	const charReq=await fetch(character.url);
+	// // 	const charReq =await charReq.json()
+	// 	const characters=response.results;
+	// 	characters.forEach(async(character,idx))
+	// 	const charreq
+
+	// })
+
+	export default getState;
