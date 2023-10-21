@@ -1,12 +1,12 @@
 
+
+body{ background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+
+  background-color: black;
+}
 h1{
   color: red;
 }
-
-body{
-  background-color: black;
-}
-
 
 .character {
     border: 2px;
@@ -14,19 +14,49 @@ body{
 .favBox{
   color: black;
 }
+.num2{
+  height: 300px;
+}
 
+.learnMoreImage{
+ height: 500px;
+ padding: 20px;
+}
+.learnMoreWords{
+
+  margin-bottom: 20px;
+  padding: 20px;
+}
 .fa-brands {
   border-color: rgb(255, 217, 0);
   box-shadow: 1px 5px 3px 1px gold;
   color: rgb(73, 71, 71);
   transform: translate(-3px, -7px);
   background-color: gray;
-  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  transition: background-color 0.3s ease; 
 }
+
 
 .fa-brands.clicked {
   background-color: red; 
 }
+h1{
+  color:darkred;
+}
+.card-body{
+background-color: gray;
+}
+
+.dataRow{
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.starWarImage{
+height: 300px;
+}
+
+/* star back ground begins here */
 @keyframes move-background {
   from {
 		-webkit-transform: translate3d(0px, 0px, 0px);
@@ -71,7 +101,6 @@ body{
 }
 
 .stars {
- background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
  position: absolute;
 	top: 0;
 	bottom: 0;
@@ -140,15 +169,3 @@ body{
 
 
 
-  h1{
-    color:darkred;
-  }
-.card-body{
-  background-color: gray;
-}
-
-  .dataRow{
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-}

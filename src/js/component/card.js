@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Card = (props) => {
     const [isClicked, setIsClicked] = useState(false);
-    const { actions } = useContext(Context);
+    const { store,actions } = useContext(Context);
 
     const handleButtonClick = () => {
         setIsClicked(!isClicked);
@@ -15,13 +15,12 @@ export const Card = (props) => {
 
     return (
         <div className="card border" style={{ width: "18rem" }}>
-            <img
+            <img className="starWarImage"
                 src={`https://starwars-visualguide.com/assets/img/${props.category}/${props.idx + 1}.jpg`}
                 onError={(e) => {
-                    e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg'
+                    e.target.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg '
                 }}
-                className="card-img-top"
-                alt="..."
+            
             />
             <div className="card-body">
                 <h5 className="card-title">{props.item.name}</h5>

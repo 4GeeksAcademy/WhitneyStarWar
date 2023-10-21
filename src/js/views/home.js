@@ -16,6 +16,9 @@ export const Home = () => {
 					)
 				})}
 			</div>
+			<br></br>
+			<br></br>
+			<br></br>
 
 
 
@@ -30,6 +33,9 @@ export const Home = () => {
 					)
 				})}
 			</div>
+			<br></br>
+			<br></br>
+			<br></br>
 			<h1>Starships</h1>
 			<div className="row dataRow ">
 				{store.starships.map((starship, index) => {
